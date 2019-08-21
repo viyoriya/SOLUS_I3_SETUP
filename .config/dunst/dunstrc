@@ -141,7 +141,7 @@ separator_color = auto
 # Print a notification on startup.
 # This is mainly for error detection, since dbus (re-)starts dunst
 # automatically after a crash.
-startup_notification = true
+startup_notification = false
 
 #dmenu path.
 #dmenu = /usr/bin/dmenu -p dunst:
@@ -155,10 +155,11 @@ browser = /usr/bin/firefox -new-tab
 # Align icons left/right/off
 icon_position = left
 max_icon_size = 30
-icon_path = /usr/share/icons/Papirus-Dark/16x16/mimetypes/:/usr/share/icons/Papirus-Dark/48x48/status/:/usr/share/icons/Papirus-Dark/16x16/devices/:/usr/share/icons/Papirus-Dark/48x48/notifications/:/usr/share/icons/Papirus-Dark/48x48/emblems/
+icon_path = /usr/share/icons/Papirus-Dark/16x16/mimetypes/:/usr/share/icons/Papirus-Dark/48x48/status/:/usr/share/icons/Papirus-Dark/16x16/devices/:/usr/share/icons/Papirus-Dark/48x48/notifications/:/usr/share/icons/Papirus-Dark/48x48/emblems/:/.local/share/icons
 
 frame_width = 1
 frame_color = "#1F222D"
+#1F222D
 
 [shortcuts]
 close = ctrl+space
@@ -173,17 +174,23 @@ background = "#1F222D"
 timeout = 4
 
 [urgency_normal]
-frame_color = "#A3BE8C"
-foreground = "#1F222D"
-background = "#A3BE8C"
+frame_color = "#1F222D"
+foreground = "#30A2DA"
+background = "#1F222D"
 timeout = 6
+#A3BE8C
 
 [urgency_critical]
-frame_color = "#D08770"
-foreground = "#1F222D"
-background = "#D08770"
+frame_color = "#1F222D"
+foreground = "#BF616A"
+background = "#1F222D"
 timeout = 8
+#D08770
 
+#[Nautilus_icon]
+#image-path=media-removable-symbolic
+#new_icon=/usr/share/icons/Papirus-Dark/48x48/devices/drive-removable-media.svg
+#timeout = 8
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.

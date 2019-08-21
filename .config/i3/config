@@ -52,12 +52,14 @@ bindsym $mod+f fullscreen toggle
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
+exec --no-startup-id compton -e 0.92 -o 0.92 -b 
 #exec --no-startup-id compton --config ~/.config/i3/compton.conf -b
-exec --no-startup-id feh --bg-scale /usr/share/backgrounds/solus/LakeSideView.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpapers/u_muhahah_the_sixer_1.jpg
 
 # Program launcher & categorized menu
-bindsym $mod+d exec --no-startup-id "rofi -show drun "
-bindsym $mod+Tab exec --no-startup-id "rofi -show window "
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+Tab exec --no-startup-id rofi -show window
+
 bindsym $mod+z exec --no-startup-id morc_menu
 bindsym $mod+q kill
 
@@ -74,6 +76,8 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+Ctrl+m exec st -- 'alsamixer'
 
 ###### commented #####################################
+#/usr/share/backgrounds/solus/SolusFresh.png
+#exec --no-startup-id clipit
 #exec --no-startup-id compton -b
 #bindsym $mod+t exec --no-startup-id pkill compton
 #bindsym $mod+Ctrl+t exec --no-startup-id compton -b

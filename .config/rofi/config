@@ -1,1 +1,23 @@
 rofi.theme: ~/.config/rofi/themes/viyoriya.rasi
+!! ==== rofi config  =====================
+
+rofi.font:Monospace Regular 8
+rofi.dpi:96
+rofi.lines:8
+rofi.bw:1
+rofi.columns:2
+rofi.padding:5
+rofi.fixed-num-lines:true
+rofi.width:38
+rofi.sidebar-mode:false
+rofi.drun-display-format:{name}
+rofi.show-icons:true
+rofi.display-drun:
+rofi.display-window:
+rofi.icon-theme:Papirus-Dark
+
+!! rofi.window-format:{w} - {c} - {t}   
+!!rofi.sort:true
+!! rofi.hide-scrollbar:true
+!! rofi.separator-style:solid
+!! ==== rofi config end ==================
