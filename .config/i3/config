@@ -1,25 +1,17 @@
-# Set mod key (Mod1=<Alt>, Mod4=<Super>) vvv
+# Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
-# Font for window titles
 font pango:Monospace Regular 9
 
-# set default desktop layout (default is tiling)
-# workspace_layout tabbed <stacking|tabbed>
-
-# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
-# Hide borders
 hide_edge_borders none
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 new_window pixel 1
-new_float normal
-
-# change borders
+new_float pixel 1
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
 bindsym $mod+n border normal
@@ -43,29 +35,28 @@ floating_modifier $mod
 bindsym $mod+h split h;exec notify-send 'Tile horizontally'
 bindsym $mod+v split v;exec notify-send 'Tile vertically'
 bindsym $mod+Shift+q split toggle
-
-# toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # 
 ################################### Autostart applications ########################################
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id compton -e 0.92 -o 0.92 -b 
-#exec --no-startup-id compton --config ~/.config/i3/compton.conf -b
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpapers/u_muhahah_the_sixer_1.jpg
+#exec --no-startup-id compton -b
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpapers/r_Dark0de_1.png
 
 # Program launcher & categorized menu
 bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+Tab exec --no-startup-id rofi -show window
-
 bindsym $mod+z exec --no-startup-id morc_menu
 bindsym $mod+q kill
 
 bindsym $mod+Return exec st
 bindsym $mod+F2 exec google-chrome-stable
-bindsym $mod+F3 exec nautilus
+bindsym $mod+F3 exec subl
+bindsym $mod+F4 exec st -e ranger
+bindsym $mod+F5 exec firefox
 
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'Dunst restarted'"
 bindsym Print exec --no-startup-id scrot ~/Pictures/%Y-%m-%d-%H-%M-%S.png 
@@ -76,22 +67,13 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 bindsym $mod+Ctrl+m exec st -- 'alsamixer'
 
 ###### commented #####################################
-#/usr/share/backgrounds/solus/SolusFresh.png
 #exec --no-startup-id clipit
-#exec --no-startup-id compton -b
 #bindsym $mod+t exec --no-startup-id pkill compton
 #bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-#exec_always --no-startup-id ff-theme-util
-#exec_always --no-startup-id fix_xcursor
-#gnome-terminal
-#-icon-theme Papirus-Dark
-# firefox
 #bindsym $mod+Ctrl+b exec gnome-terminal -e 'bmenu'
 #bindsym $mod+F5 exec gnome-terminal -e 'mocp'
-# Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-# focus_follows_mouse no
 ################################### Experiment ####################################################
 #exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 #exec_always --no-startup-id gnome-power-manager
@@ -187,8 +169,9 @@ bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 # Open applications on specific workspaces
  assign [class="St"] $ws1
  assign [class="Google-chrome"] $ws2
+ assign [class="Firefox"] $ws2
  assign [class="Sublime_text"] $ws3
- assign [class="Nautilus"] $ws4
+ assign [class="Subl"] $ws3
  assign [class="Grub-customizer"] $ws5
  assign [class="Grub-GParted"] $ws5
 
@@ -209,7 +192,6 @@ for_window [window_role="Open Files"] floating enable
 #for_window [class="Gcolor3"] floating enable border normal
 #for_window [class="(?i)virtualbox"] floating enable border normal
 
-
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
@@ -217,10 +199,8 @@ for_window [urgent=latest] focus
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+0 exec --no-startup-id blurlock
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
-
-#set $mode_system  Lock  Exit  User  Reboot  Shutdown
 set $mode_system <span font='9' weight='bold'>   <u>L</u>ock   <u>E</u>xit   <u>R</u>eboot   <u>S</u>hutdown </span>
 
 bindsym $mod+0 mode "$mode_system"
@@ -284,7 +264,6 @@ bar {
     strip_workspace_numbers yes
     
     #workspace_buttons no  
-    #i3bar_command i3bar
     #  please set your primary output 'xrandr --output eDP1 --primary'
     #  tray_output primary
     #  tray_output LVDS1 
@@ -340,18 +319,18 @@ smart_borders on
 # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). 
 # If you also press Shift with these keys, the change will be global for all workspaces.
 
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps <span font='9' weight='bold'>Gaps: (<u>o</u>)uter (<u>i</u>)nner</span>
+set $mode_gaps_outer <span font='9' weight='bold'>Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)</span>
+set $mode_gaps_inner <span font='9' weight='bold'>Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)</span>
 bindsym $mod+Shift+g mode "$mode_gaps"
 
-mode "$mode_gaps" {
+mode --pango_markup "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
         bindsym i      mode "$mode_gaps_inner"
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-mode "$mode_gaps_inner" {
+mode --pango_markup "$mode_gaps_inner" {
         bindsym plus  gaps inner current plus 5
         bindsym minus gaps inner current minus 5
         bindsym 0     gaps inner current set 0
@@ -363,7 +342,7 @@ mode "$mode_gaps_inner" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-mode "$mode_gaps_outer" {
+mode --pango_markup "$mode_gaps_outer" {
         bindsym plus  gaps outer current plus 5
         bindsym minus gaps outer current minus 5
         bindsym 0     gaps outer current set 0
